@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clinic Queuing System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 20px;
+    }
+    #container {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+    button {
+      padding: 10px 15px;
+      font-size: 16px;
+      border: none;
+      background: #007bff;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .clinic {
+      padding: 10px;
+      margin-top: 15px;
+      background: #e9ecef;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .clinic button {
+      background: #28a745;
+    }
+    .clinic button:hover {
+      background: #1e7e34;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h2>Clinic Queuing System</h2>
+    <button id="addClinicBtn">Add Clinic</button>
+
+    <div id="clinicList"></div>
+  </div>
+
+  <script>
+    const addClinicBtn = document.getElementById('addClinicBtn');
+    const clinicList = document.getElementById('clinicList');
+    let clinicCount = 0;
+
+    addClinicBtn.addEventListener('click', () => {
+      const clinicName = prompt('Enter Clinic Name:');
+      if (!clinicName) return;
+
+      clinicCount++;
+
+      const clinicDiv = document.createElement('div');
+      clinicDiv.className = 'clinic';
+      clinicDiv.innerHTML = `
+        <span><strong>${clinicName}</strong></span>
+        <button onclick="alert('You clicked ${clinicName}!')">Open Queue</button>
+      `;
+
+      clinicList.appendChild(clinicDiv);
+    });
+  </script>
+</body>
+</html>
